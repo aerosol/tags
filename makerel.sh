@@ -4,7 +4,7 @@ LAST=$(git describe --match "r[0-9\.]*" --tags --abbrev=0 HEAD) || echo "r$UTC_N
 echo "Last: $LAST"
 IFS=- read -r R_LEFT R_SEQ <<< $LAST
 NEW_SEQ=$((R_SEQ+1))
-NEW_REL="r/$UTC_NOW/$NEW_SEQ"
+NEW_REL="r$UTC_NOW-$NEW_SEQ"
 git add log.txt
 echo "This is release $NEW_REL" >> log.txt
 git commit . -m "Releasing $NEW_REL"
